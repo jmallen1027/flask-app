@@ -5,6 +5,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime
+import os ## Importing Operating System for Docker File
 
 
 
@@ -38,9 +39,9 @@ def post(post_id):
         post = Blogpost.query.filter_by(id=post_id).one()
         return render_template('post.html', post=post)
 
-@app.route('/contact')
-def contact():
-        return render_template('contact.html')
+# @app.route('/contact')
+# def contact():
+        # return render_template('contact.html')
 
 @app.route('/add')
 def add():
@@ -61,4 +62,8 @@ def addpost():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
+   
+   ## Adding new If Statement for App to run on Docker. 
+   ## app.run(debug=True)
