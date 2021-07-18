@@ -1,0 +1,15 @@
+import mysql.connector # Importing the Python mysql -connector package. 
+
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "flask",
+    passwd = "JaredCook89$",
+)
+
+my_cursor = mydb.cursor()
+my_cursor.execute("CREATE DATABASE blog")
+
+# Verify if the Database was created. 
+my_cursor.execute("SHOW DATABASES")
+for db in my_cursor:
+    print(db)
