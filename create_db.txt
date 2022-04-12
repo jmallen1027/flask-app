@@ -3,7 +3,7 @@ import mysql.connector # Importing the Python mysql -connector package.
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "flask",
-    passwd = "JaredCook89$",
+    passwd = "PASSWORD",
 )
 
 my_cursor = mydb.cursor()
